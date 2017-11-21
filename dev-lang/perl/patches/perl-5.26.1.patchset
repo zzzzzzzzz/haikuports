@@ -1,8 +1,11 @@
-From e3d2e902e1e4225a8de7854f53c4572e8e22bd5c Mon Sep 17 00:00:00 2001
+From 852131f9d60eb83f00843261ed42ea62d4f7a29b Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 22 Sep 2013 14:52:03 +0200
-Subject: Tell perl that BFS has a link count of 1
+Subject: [PATCH 01/13] Tell perl that BFS has a link count of 1
 
+---
+ cpan/File-Temp/lib/File/Temp.pm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/cpan/File-Temp/lib/File/Temp.pm b/cpan/File-Temp/lib/File/Temp.pm
 index 817c6d9..c3298a6 100644
@@ -19,14 +22,16 @@ index 817c6d9..c3298a6 100644
    # fall-through if we can't unlink now
    _deferred_unlink($fh, $path, 0);
 -- 
-2.12.2
+2.7.0
 
-
-From 89b53ae715b1c82f7d666258aa8440e7a3e530e8 Mon Sep 17 00:00:00 2001
+From b47cd91b5eb37082cd09a23be6f2c983ed2ee66d Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 22 Sep 2013 14:52:53 +0200
-Subject: Haiku defines, but does not implement O_EXLOCK
+Subject: [PATCH 02/13] Haiku defines, but does not implement O_EXLOCK
 
+---
+ cpan/File-Temp/t/lock.t | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/cpan/File-Temp/t/lock.t b/cpan/File-Temp/t/lock.t
 index ff8c7f9..4364bf6 100644
@@ -43,14 +48,16 @@ index ff8c7f9..4364bf6 100644
    } else {
      plan tests => 4;
 -- 
-2.12.2
+2.7.0
 
-
-From 6748fefa6d9eb99d564fc7d9227a1b164bac7eec Mon Sep 17 00:00:00 2001
+From 6fb8379525e3181a997fda94ec3985aa843539a4 Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 22 Sep 2013 14:53:40 +0200
-Subject: haiku sets all its specifics via Configure
+Subject: [PATCH 03/13] haiku sets all its specifics via Configure
 
+---
+ hints/haiku.sh | 45 +--------------------------------------------
+ 1 file changed, 1 insertion(+), 44 deletions(-)
 
 diff --git a/hints/haiku.sh b/hints/haiku.sh
 index fa8ebe5..0f09f53 100644
@@ -103,14 +110,16 @@ index fa8ebe5..0f09f53 100644
 -
 +# haiku sets all its specifics via Configure
 -- 
-2.12.2
+2.7.0
 
-
-From 2b70284ebb3298507281413b1509babb8d5e91ce Mon Sep 17 00:00:00 2001
+From 79897d15f793d626cb891c77c2d71159d7cab073 Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 22 Sep 2013 14:54:15 +0200
-Subject: Tell perl that Haiku needs haikuish.h installed as well
+Subject: [PATCH 04/13] Tell perl that Haiku needs haikuish.h installed as well
 
+---
+ installperl | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/installperl b/installperl
 index af61203..ed94fe6 100755
@@ -129,14 +138,16 @@ index af61203..ed94fe6 100755
  
  
 -- 
-2.12.2
+2.7.0
 
-
-From e568e5ca5a7b2221d47df55ee091c1051e5cfd71 Mon Sep 17 00:00:00 2001
+From d0ca85235463141f5be5a50f873c47e3086f493b Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 22 Sep 2013 14:55:13 +0200
-Subject: Fix handling of exit codes on Haiku
+Subject: [PATCH 05/13] Fix handling of exit codes on Haiku
 
+---
+ t/run/exit.t | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/t/run/exit.t b/t/run/exit.t
 index ce3270e..cab9a79 100644
@@ -180,14 +191,16 @@ index ce3270e..cab9a79 100644
    }
  
 -- 
-2.12.2
+2.7.0
 
-
-From 28176c64ece7fa6a7463e37be51b178b47af880c Mon Sep 17 00:00:00 2001
+From a181acdd2bc83b86b3fca4691e0a4490ec8ac478 Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 22 Sep 2013 15:00:44 +0200
-Subject: Fix include path of errno.h
+Subject: [PATCH 06/13] Fix include path of errno.h
 
+---
+ ext/Errno/Errno_pm.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
 index d345e98..1fe9312 100644
@@ -203,18 +216,22 @@ index d345e98..1fe9312 100644
      } elsif ($^O eq 'vos') {
  	# avoid problem where cpp returns non-POSIX pathnames
 -- 
-2.12.2
+2.7.0
 
-
-From defcd2cb6678102074a36a05f73c40ec6d5b9151 Mon Sep 17 00:00:00 2001
+From 5edc20fa4affabe714e7087c5932113a5bf0754c Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sat, 28 Sep 2013 13:46:42 +0200
-Subject: Adjust ExtUtils::MakeMaker for PM-Haiku.
+Subject: [PATCH 07/13] Adjust ExtUtils::MakeMaker for PM-Haiku.
 
 * MakeMaker-projects trying to install into 'site-perl' while specifying
   PREFIX would end up using a wrong 'site-perl' prefix.
 * Split MM_Haiku.pm off MM_BeOS.pm, implementing Haiku-specific overrides
   for MakeMaker.
+---
+ cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM.pm       |  3 +-
+ cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm | 70 ++++++++++++++++++++++++
+ 2 files changed, 72 insertions(+), 1 deletion(-)
+ create mode 100644 cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm
 
 diff --git a/cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM.pm b/cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM.pm
 index b327932..ff255e3 100644
@@ -307,14 +324,16 @@ index 0000000..81e5f99
 +__END__
 +
 -- 
-2.12.2
+2.7.0
 
-
-From f1a15827cefe0f511ee9c83e9f1bc17637017153 Mon Sep 17 00:00:00 2001
+From 185c18e6bb826f42626031e8e80d49adc0dd15cc Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Tue, 8 Oct 2013 22:16:37 +0200
-Subject: Avoid using -rpath for dynamic modules.
+Subject: [PATCH 08/13] Avoid using -rpath for dynamic modules.
 
+---
+ cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm | 27 ++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
 diff --git a/cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm b/cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm
 index 81e5f99..25ace13 100644
@@ -355,14 +374,18 @@ index 81e5f99..25ace13 100644
  __END__
  
 -- 
-2.12.2
+2.7.0
 
-
-From 3e15b37383dac689ccfb1e0a425d00b3a88cb94d Mon Sep 17 00:00:00 2001
+From 8e684b3bbe0c198ae358cbc6840018f0b8294753 Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Tue, 8 Oct 2013 22:17:26 +0200
-Subject: Add script sitecustomize.pl for setting up @INC as we need it.
+Subject: [PATCH 09/13] Add script sitecustomize.pl for setting up @INC as we
+ need it.
 
+---
+ sitecustomize.pl | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 sitecustomize.pl
 
 diff --git a/sitecustomize.pl b/sitecustomize.pl
 new file mode 100644
@@ -407,17 +430,19 @@ index 0000000..a321e51
 +}
 +@INC = @newINC;
 -- 
-2.12.2
+2.7.0
 
-
-From 3bd84e84c96e2f6177efe4e9635b49518da53681 Mon Sep 17 00:00:00 2001
+From 9d5875a4ff424a355c67c375d601c5c76df0b505 Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Wed, 9 Oct 2013 20:29:38 +0200
-Subject: Fix initialization check for CPAN.
+Subject: [PATCH 10/13] Fix initialization check for CPAN.
 
 * On Haiku, only the site-lib directories will ever be writable,
   as the others read-only. This avoids CPAN asking for a way to
   circumvent unwritable lib dirs.
+---
+ cpan/CPAN/lib/CPAN/FirstTime.pm | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/cpan/CPAN/lib/CPAN/FirstTime.pm b/cpan/CPAN/lib/CPAN/FirstTime.pm
 index 531c115..b9d87d7 100644
@@ -437,16 +462,18 @@ index 531c115..b9d87d7 100644
          && -w $Config{installarchlib}
          && -w $Config{installsitelib}
 -- 
-2.12.2
+2.7.0
 
-
-From 416a2fad2370555efb3ada6533dc9b358e807f50 Mon Sep 17 00:00:00 2001
+From 178d95fa8b6af51fa02110b484836bd629af5411 Mon Sep 17 00:00:00 2001
 From: Oliver Tappe <zooey@hirschkaefer.de>
 Date: Sun, 13 Oct 2013 17:32:50 +0200
-Subject: Add support for HAIKU_USE_VENDOR_DIRECTORIES.
+Subject: [PATCH 11/13] Add support for HAIKU_USE_VENDOR_DIRECTORIES.
 
 * Adjust MakeMaker to automatically switch to vendor directories if
   requested via HAIKU_USE_VENDOR_DIRECTORIES.
+---
+ cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm | 33 ++++++------------------
+ 1 file changed, 8 insertions(+), 25 deletions(-)
 
 diff --git a/cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm b/cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Haiku.pm
 index 25ace13..8a04ead 100644
@@ -513,17 +540,19 @@ index 25ace13..8a04ead 100644
  __END__
  
 -- 
-2.12.2
+2.7.0
 
-
-From a84052db950febbc6e2e1527993b3f0f0b06b566 Mon Sep 17 00:00:00 2001
+From 85f319eb850dfd0f5a6b6615808315a8d8ecd35a Mon Sep 17 00:00:00 2001
 From: Jerome Duval <jerome.duval@gmail.com>
 Date: Fri, 9 Jun 2017 21:30:33 +0200
-Subject: disable fstack-protector for Haiku
+Subject: [PATCH 12/13] disable fstack-protector for Haiku
 
+---
+ Configure | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/Configure b/Configure
-index 3259249..34e5d7d 100755
+index bdcfaf1..acdd3da 100755
 --- a/Configure
 +++ b/Configure
 @@ -5507,6 +5507,7 @@ default|recommended)
@@ -535,5 +564,72 @@ index 3259249..34e5d7d 100755
  		?*)	set stack-protector-strong -fstack-protector-strong
  			eval $checkccflag
 -- 
-2.12.2
+2.7.0
+
+From 44642096f45e9fa1438386a6c4bcc7ea5bfd2f09 Mon Sep 17 00:00:00 2001
+From: zzzzzzzzz <bug5lay4r@gmail.com>
+Date: Mon, 20 Nov 2017 23:49:37 +0000
+Subject: [PATCH 13/13] Drop dropping privileges as it doesn't work for haiku
+
+---
+ cpan/Pod-Perldoc/lib/Pod/Perldoc.pm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm b/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm
+index 8d695b2..6ccebd3 100644
+--- a/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm
++++ b/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm
+@@ -67,6 +67,7 @@ BEGIN {
+  *is_dos     = $^O eq 'dos'     ? \&TRUE : \&FALSE unless defined &is_dos;
+  *is_os2     = $^O eq 'os2'     ? \&TRUE : \&FALSE unless defined &is_os2;
+  *is_cygwin  = $^O eq 'cygwin'  ? \&TRUE : \&FALSE unless defined &is_cygwin;
++ *is_haiku   = $^O eq 'haiku'   ? \&TRUE : \&FALSE unless defined &is_haiku;
+  *is_linux   = $^O eq 'linux'   ? \&TRUE : \&FALSE unless defined &is_linux;
+  *is_hpux    = $^O =~ m/hpux/   ? \&TRUE : \&FALSE unless defined &is_hpux;
+  *is_amigaos = $^O eq 'amigaos' ? \&TRUE : \&FALSE unless defined &is_amigaos;
+@@ -2059,7 +2060,7 @@ sub drop_privs_maybe {
+ 
+     # Attempt to drop privs if we should be tainting and aren't
+     if (!( $self->is_vms || $self->is_mswin32 || $self->is_dos
+-          || $self->is_os2
++          || $self->is_os2 || $self->is_haiku
+          )
+         && ($> == 0 || $< == 0)
+         && !$self->am_taint_checking()
+-- 
+2.7.0
+
+From 2eb72fc68ebefaa6b8a3f5758157899aee0bba1b Mon Sep 17 00:00:00 2001
+From: zzzzzzzzz <bug5lay4r@gmail.com>
+Date: Mon, 20 Nov 2017 23:49:37 +0000
+Subject: [PATCH 13/13] Fix longstanding bug #176 with perldoc.
+
+Drop dropping privileges as it doesn't workifor Haiku.
+---
+ cpan/Pod-Perldoc/lib/Pod/Perldoc.pm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm b/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm
+index 8d695b2..6ccebd3 100644
+--- a/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm
++++ b/cpan/Pod-Perldoc/lib/Pod/Perldoc.pm
+@@ -67,6 +67,7 @@ BEGIN {
+  *is_dos     = $^O eq 'dos'     ? \&TRUE : \&FALSE unless defined &is_dos;
+  *is_os2     = $^O eq 'os2'     ? \&TRUE : \&FALSE unless defined &is_os2;
+  *is_cygwin  = $^O eq 'cygwin'  ? \&TRUE : \&FALSE unless defined &is_cygwin;
++ *is_haiku   = $^O eq 'haiku'   ? \&TRUE : \&FALSE unless defined &is_haiku;
+  *is_linux   = $^O eq 'linux'   ? \&TRUE : \&FALSE unless defined &is_linux;
+  *is_hpux    = $^O =~ m/hpux/   ? \&TRUE : \&FALSE unless defined &is_hpux;
+  *is_amigaos = $^O eq 'amigaos' ? \&TRUE : \&FALSE unless defined &is_amigaos;
+@@ -2059,7 +2060,7 @@ sub drop_privs_maybe {
+ 
+     # Attempt to drop privs if we should be tainting and aren't
+     if (!( $self->is_vms || $self->is_mswin32 || $self->is_dos
+-          || $self->is_os2
++          || $self->is_os2 || $self->is_haiku
+          )
+         && ($> == 0 || $< == 0)
+         && !$self->am_taint_checking()
+-- 
+2.7.0
 
